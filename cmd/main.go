@@ -5,7 +5,7 @@ import (
 	"database/sql"
 	"log"
 
-	"pkg/persistance"
+	"github.com/egavrev/project_tracker/pkg/persistance"
 )
 
 func main() {
