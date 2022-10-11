@@ -3,7 +3,7 @@
 //   sqlc v1.15.0
 // source: query.sql
 
-package github.com/egavrev/project_tracker
+package persistance
 
 import (
 	"context"

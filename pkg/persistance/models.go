@@ -2,7 +2,7 @@
 // versions:
 //   sqlc v1.15.0
 
-package github.com/egavrev/project_tracker
+package persistance
 
 import (
 	"database/sql"
