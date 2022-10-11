@@ -1,20 +1,28 @@
 package main
 
 import (
+	"context"
+	"database/sql"
 	"log"
-	"net/http"
 
-	"github.com/egavrev/project_tracker/pkg/db"
-	"github.com/egavrev/project_tracker/pkg/handlers"
-
-	"github.com/gorilla/mux"
+	"pkg/persistance"
 )
 
 func main() {
-	DB := db.Init()
-	h := handlers.New(DB)
-	router := mux.NewRouter()
+	ctx := context.Background()
 
-	log.Println("API is running!")
-	http.ListenAndServe(":4000", router)
+	db, err := sql.Open("postgres", "postgres://postgres:postgrespw@localhost:55000")
+	if err != nil {
+		panic(1)
+	}
+
+	queries := persistance.New(db)
+
+	// list all authors
+	authors, err := queries.GetUser(ctx)
+	if err != nil {
+		panic(1)
+	}
+	log.Println(authors)
+
 }
